@@ -1,0 +1,167 @@
+:root{
+  --bg-start: #0f172a;
+  --bg-end: #0b2238;
+  --card: rgba(255,255,255,0.06);
+  --glass-blur: 10px;
+  --primary-1: #6ee7b7;
+  --primary-2: #3b82f6;
+  --accent: #fb7185;
+  --muted: rgba(255,255,255,0.75);
+  --glass-border: rgba(255,255,255,0.08);
+  --shadow: 0 8px 30px rgba(2,6,23,0.6);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background: linear-gradient(160deg, var(--bg-start) 0%, var(--bg-end) 60%);
+  color:var(--muted);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:28px;
+  position:relative;
+  overflow:hidden;
+}
+
+/* decorative blurred shapes */
+.bg-decor{
+  position:fixed;
+  inset: -10% -10% auto -10%;
+  height:120%;
+  background:
+    radial-gradient(600px 400px at 10% 20%, rgba(99,102,241,0.18), transparent 20%),
+    radial-gradient(500px 300px at 90% 80%, rgba(16,185,129,0.12), transparent 15%),
+    radial-gradient(400px 220px at 70% 10%, rgba(239,68,68,0.09), transparent 12%);
+  filter: blur(36px) saturate(120%);
+  pointer-events:none;
+  z-index:0;
+}
+
+/* container */
+.container{
+  width:100%;
+  max-width:460px;
+  text-align:center;
+  z-index:1;
+}
+
+/* title */
+.title{
+  font-size:1.15rem;
+  margin:0 0 18px 0;
+  color:rgba(255,255,255,0.9);
+  letter-spacing:0.02em;
+}
+
+/* card (glass) */
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  border-radius:16px;
+  box-shadow:var(--shadow);
+  padding:28px 20px;
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+}
+
+/* counter display */
+.counter{
+  font-size:4rem;
+  line-height:1;
+  font-weight:800;
+  margin-bottom:18px;
+  color:transparent;
+  background-image: linear-gradient(90deg, var(--primary-1), var(--primary-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:1em;
+  letter-spacing: -0.02em;
+  transition: transform .12s ease;
+}
+
+/* pop animation (applies when value changes) */
+.counter.pop{
+  animation: pop .28s cubic-bezier(.2,.9,.3,1);
+}
+@keyframes pop {
+  0% { transform: scale(1); filter: drop-shadow(0 6px 18px rgba(59,130,246,0.12)); }
+  50% { transform: scale(1.16); }
+  100% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(0,0,0,0)); }
+}
+
+/* controls */
+.controls{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+/* buttons */
+.btn{
+  -webkit-tap-highlight-color: transparent;
+  border:0;
+  padding:12px 18px;
+  border-radius:12px;
+  font-size:1rem;
+  font-weight:700;
+  cursor:pointer;
+  transition: transform .08s ease, box-shadow .12s ease, opacity .08s ease;
+  min-width:120px;
+  color: #071029;
+  box-shadow: 0 6px 16px rgba(2,6,23,0.45);
+}
+
+.btn:active{transform:translateY(1px)}
+.btn:focus{outline:3px solid rgba(99,102,241,0.18); outline-offset:3px}
+
+/* primary gradient button */
+.btn-primary{
+  background: linear-gradient(90deg, var(--primary-1), var(--primary-2));
+  color: #021027;
+  box-shadow: 0 12px 30px rgba(59,130,246,0.18);
+}
+
+/* secondary (reset) */
+.btn-secondary{
+  background: transparent;
+  color: rgba(255,255,255,0.9);
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: none;
+}
+
+/* reset when active (non-zero) */
+.btn-secondary.danger{
+  background: linear-gradient(90deg, rgba(251,113,133,0.12), rgba(251,113,133,0.06));
+  color: #ffdbe0;
+  border-color: rgba(251,113,133,0.28);
+  box-shadow: 0 10px 26px rgba(251,113,133,0.06);
+}
+
+/* footer hint */
+.hint{
+  margin-top:14px;
+  font-size:0.9rem;
+  color:rgba(255,255,255,0.72);
+}
+
+/* responsive tweaks */
+@media (max-width:460px){
+  body{padding:20px}
+  .counter{font-size:3.2rem}
+  .btn{min-width:106px; padding:10px 14px}
+}
+
+@media (max-width:360px){
+  .counter{font-size:2.6rem}
+  .controls{gap:8px}
+  .btn{min-width:96px; padding:9px 12px}
+}

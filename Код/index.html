@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Counter Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-decor" aria-hidden="true"></div>
+
+  <main class="container">
+    <h1 class="title">Counter</h1>
+
+    <div class="card" role="group" aria-label="Counter tracker">
+      <div id="counter" class="counter" aria-live="polite">0</div>
+
+      <div class="controls">
+        <button id="increment" class="btn btn-primary" aria-label="Increment counter">
+          + Increment
+        </button>
+        <button id="reset" class="btn btn-secondary" aria-label="Reset counter">
+          Reset
+        </button>
+      </div>
+    </div>
+
+    <footer class="hint">Value is saved locally — it persists between sessions.</footer>
+  </main>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
