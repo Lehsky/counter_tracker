@@ -31,8 +31,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     reply_markup = InlineKeyboardMarkup(keyboard)
 
     await update.message.reply_text(
-        "<b>Добро пожаловать в 15 Puzzle!</b>\n\n"
-        "https://t.me/modern_15_bot/game",
+        "<b>Добро пожаловать в Counter Tracker!</b>\n\n"
+        "https://t.me/@FriendlyCounterBot/tracker",
         reply_markup=reply_markup,
         parse_mode="HTML"
     )
@@ -44,7 +44,7 @@ async def rules_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.answer()
 
     rules_text = (
-        "📜 <b>Правила 15 Puzzle:</b>\n\n"
+        "📜 <b>Правила Counter Tracker:</b>\n\n"
         "1. Это тестовая версия игры.\n"
         "2. Прогресс может не сохраняться.\n"
         "3. Баланс и механики могут меняться.\n"
