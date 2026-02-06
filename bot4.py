@@ -32,7 +32,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     await update.message.reply_text(
         "<b>Добро пожаловать в Counter Tracker!</b>\n\n"
-        "https://t.me/@FriendlyCounterBot/tracker",
+        "https://t.me/FriendlyCounterBot/tracker",
         reply_markup=reply_markup,
         parse_mode="HTML"
     )
