@@ -19,7 +19,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [
             InlineKeyboardButton(
                 text="📜 Правила",
-                callback_data="rules"
+                url="https://vldlnz.tilda.ws/apps"
             ),
             InlineKeyboardButton(
                 text="💬 Поддержка",
@@ -38,31 +38,10 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
 
-# --- Правила ---
-async def rules_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    query = update.callback_query
-    await query.answer()
-
-    rules_text = (
-        "📜 <b>Правила Counter Tracker:</b>\n\n"
-        "1. Это тестовая версия игры.\n"
-        "2. Прогресс может не сохраняться.\n"
-        "3. Баланс и механики могут меняться.\n"
-        "4. Использование багов запрещено.\n\n"
-        "Полные правила будут позже."
-    )
-
-    await query.message.reply_text(
-        rules_text,
-        parse_mode="HTML"
-    )
-
-
 # --- App ---
 app = ApplicationBuilder().token(BOT_TOKEN).build()
 
 app.add_handler(CommandHandler("start", start))
-app.add_handler(CallbackQueryHandler(rules_handler, pattern="^rules$"))
 
 print("Bot started...")
 
